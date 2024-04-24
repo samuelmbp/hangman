@@ -1,15 +1,15 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         WordChooser wordChooser = new WordChooser();
         MaskedWord masked = new MaskedWord();
-        ArrayList<Character> characters = new ArrayList<>(Arrays.asList('S', 'E', 'N', 'E', 'O'));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name: ");
 
-        String word = wordChooser.getRandomWord();
-        System.out.println(masked.getMaskedWord(word, characters));
+        Game game = new Game(wordChooser, masked, scanner.nextLine());
+        game.run();
     }
 }

@@ -8,7 +8,6 @@ public class MaskedWord {
 
         for (int i = 0; i < word.length(); i++) {
            Character currentLetter = word.charAt(i);
-            System.out.println(word.charAt(i));
            if (i == 0) {
                builder.append(currentLetter);
            } else {
