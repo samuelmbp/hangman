@@ -8,11 +8,7 @@ public class MaskedWord {
 
         for (int i = 0; i < word.length(); i++) {
            Character currentLetter = word.charAt(i);
-           if (i == 0) {
-               builder.append(currentLetter);
-           } else {
-               builder.append(guessedLetters.contains(currentLetter) ? currentLetter : '_');
-           }
+           builder.append(guessedLetters.contains(currentLetter) ? currentLetter : '_');
         }
 
         return builder.toString();
