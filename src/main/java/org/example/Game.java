@@ -1,5 +1,7 @@
 package org.example;
 
+import static org.example.HangmanPics.HANGMAN_PICS;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class Game {
     final private String word;
     final private String name;
     final private Scanner scanner = new Scanner(System.in);
-    private int remainingAttempts = 4;
+    private int remainingAttempts = 7;
 
     public Game(WordChooser wordChooser, MaskedWord maskedWord, String name) {
         this.wordChooser = wordChooser;
@@ -44,6 +46,7 @@ public class Game {
                 } else {
                     print.wrongGuess();
                     System.out.println(getWordToGuess());
+                    displayHangman();
                 }
             }
         }
@@ -83,5 +86,10 @@ public class Game {
                 return false;
         }
         return true;
+    }
+
+    private void displayHangman() {
+        int index = HANGMAN_PICS.length - getRemainingAttempts();
+        System.out.println(HANGMAN_PICS[index]);
     }
 }
