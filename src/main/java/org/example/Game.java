@@ -10,8 +10,8 @@ public class Game {
     final private Print print = new Print();
     final private String word;
     final private String name;
-    private Scanner scanner = new Scanner(System.in);
-    private int remainingAttempts = 8;
+    final private Scanner scanner = new Scanner(System.in);
+    private int remainingAttempts = 4;
 
     public Game(WordChooser wordChooser, MaskedWord maskedWord, String name) {
         this.wordChooser = wordChooser;
@@ -25,17 +25,28 @@ public class Game {
         print.wordToGuessMessage();
         System.out.println(getWordToGuess());
 
+        while(!isGameWon() && getRemainingAttempts() > 0 ) {
             print.askPlayerForLetterInput(this.name, remainingAttempts);
             Character playerLetterInput = scanner.nextLine().toUpperCase().charAt(0);
             String playerInput = guessLetter(playerLetterInput);
 
             if (playerInput.equals("right")) {
-                System.out.println("Good");
+                if (isGameWon()) {
+                    print.congratulateWinner(this.name, this.word);
+                    break;
+                } else {
+                    print.correctGuess();
+                    System.out.println(getWordToGuess());
+                }
             } else {
-                System.out.println("Not good.");
-                System.out.println(getRemainingAttempts());
+                if (isGameLost()) {
+                    break;
+                } else {
+                    print.wrongGuess();
+                    System.out.println(getWordToGuess());
+                }
             }
-
+        }
     }
 
     private  String getWordToGuess() {
@@ -54,5 +65,23 @@ public class Game {
             this.remainingAttempts--;
             return "wrong";
         }
+    }
+
+    private boolean isGameLost() {
+        if (this.remainingAttempts == 0) {
+            print.gameLostMessage();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean isGameWon() {
+        for (int i = 1; i < this.word.length(); i++) {
+            Character letter = this.word.charAt(i);
+            if (!this.guessedLetters.contains(letter))
+                return false;
+        }
+        return true;
     }
 }

@@ -14,4 +14,20 @@ public class Print {
     public void askPlayerForLetterInput(String name, int remainingAttempts) {
         System.out.printf("%s: Enter one letter to guess (%d attempts remaining):\n", name, remainingAttempts);
     }
+
+    public void congratulateWinner(String name, String word) {
+        System.out.printf("Congratulations %s! You won! \nThe word to guess was: %s", name, word);
+    }
+
+    public void correctGuess() {
+        System.out.println("Correct!");
+    }
+
+    public void wrongGuess() {
+        System.out.println("Wrong!");
+    }
+
+    public void gameLostMessage() {
+        System.out.println("You lost! Try again.");
+    }
 }
