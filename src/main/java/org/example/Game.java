@@ -32,9 +32,9 @@ public class Game {
         while(!isGameWon() && getRemainingAttempts() > 0 ) {
             print.askPlayerForLetterInput(this.name, remainingAttempts);
             Character playerLetterInput = scanner.nextLine().toUpperCase().charAt(0);
-            String playerInput = guessLetter(playerLetterInput);
+            boolean correctGuess = guessLetter(playerLetterInput);
 
-            if (playerInput.equals("right")) {
+            if (correctGuess) {
                 if (isGameWon()) {
                     print.congratulateWinner(this.name, this.word);
                     break;
@@ -64,13 +64,13 @@ public class Game {
         return this.remainingAttempts;
     }
 
-    private String guessLetter(Character letter) {
+    private boolean guessLetter(Character letter) {
         if (this.word.indexOf(letter) != - 1) {
             guessedLetters.add(letter);
-            return "right";
+            return true;
         } else {
             this.remainingAttempts--;
-            return "wrong";
+            return false;
         }
     }
 
