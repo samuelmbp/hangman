@@ -9,13 +9,15 @@ import java.util.Scanner;
 public class Game {
     private final ArrayList<Character> guessedLetters = new ArrayList<>();
     private final MaskedWord maskedWord;
+    private final WordChooser wordChooser;
     private final Print print = new Print();
-    private final String word;
+    private String word;
     private final String name;
     private final Scanner scanner = new Scanner(System.in);
     private int remainingAttempts = 7;
 
     public Game(WordChooser wordChooser, MaskedWord maskedWord, String name) {
+        this.wordChooser = wordChooser;
         this.word = wordChooser.getRandomWord();
         this.maskedWord = maskedWord;
         this.name = name;
@@ -50,6 +52,8 @@ public class Game {
                 }
             }
         }
+
+        playAgain();
     }
 
     private  String getWordToGuess() {
@@ -79,13 +83,35 @@ public class Game {
         }
     }
 
-    public boolean isGameWon() {
-        for (int i = 1; i < this.word.length(); i++) {
+    private boolean isGameWon() {
+        for (int i = 0; i < this.word.length(); i++) {
             Character letter = this.word.charAt(i);
             if (!this.guessedLetters.contains(letter))
                 return false;
         }
         return true;
+    }
+
+    private void playAgain() {
+        String playAgain = "";
+        while(!playAgain.equals("yes")) {
+            System.out.print("Would you like to play again? (yes/no): ");
+            playAgain = scanner.nextLine().toLowerCase();
+            if (playAgain.equals("yes")) {
+                resetGame();
+                run();
+            } else {
+                System.out.println("Thank you for playing! Goodbye!");
+                break;
+            }
+        }
+    }
+
+    private void resetGame() {
+        guessedLetters.clear();
+        this.remainingAttempts = 7;
+        this.word = wordChooser.getRandomWord();
+        System.out.println("Starting a new game...");
     }
 
     private void displayHangman() {
