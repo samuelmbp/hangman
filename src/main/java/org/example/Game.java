@@ -1,17 +1,18 @@
 package org.example;
 
 import static org.example.HangmanPics.HANGMAN_PICS;
+import static org.example.HangmanPics.hangmanDrawing;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    final private ArrayList<Character> guessedLetters = new ArrayList<>();
-    final private MaskedWord maskedWord;
-    final private Print print = new Print();
-    final private String word;
-    final private String name;
-    final private Scanner scanner = new Scanner(System.in);
+    private final ArrayList<Character> guessedLetters = new ArrayList<>();
+    private final MaskedWord maskedWord;
+    private final Print print = new Print();
+    private final String word;
+    private final String name;
+    private final Scanner scanner = new Scanner(System.in);
     private int remainingAttempts = 7;
 
     public Game(WordChooser wordChooser, MaskedWord maskedWord, String name) {
@@ -21,6 +22,7 @@ public class Game {
     }
 
     public void run() {
+        hangmanDrawing();
         print.welcomeMessage(this.name);
         print.wordToGuessMessage();
         System.out.println(getWordToGuess());
@@ -70,7 +72,7 @@ public class Game {
 
     private boolean isGameLost() {
         if (this.remainingAttempts == 0) {
-            print.gameLostMessage();
+            print.gameLostMessage(this.word);
             return true;
         } else {
             return false;

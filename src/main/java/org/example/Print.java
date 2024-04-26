@@ -17,7 +17,7 @@ public class Print {
 
     public void congratulateWinner(String name, String word) {
         System.out.println("================================");
-        System.out.printf("Congratulations %s! You won! \nThe word to guess was: %s", name, word);
+        System.out.printf("Congratulations %s! You won! \nThe word was: [%s]", name, word);
     }
 
     public void correctGuess() {
@@ -28,7 +28,8 @@ public class Print {
         System.out.println("Wrong!");
     }
 
-    public void gameLostMessage() {
-        System.out.println("You lost! Try again.");
+    public void gameLostMessage(String word) {
+        System.out.printf("Sorry, you lost! The word was: [%s]. Better luck next time!", word);
+
     }
 }
