@@ -11,11 +11,11 @@ public class Print {
         System.out.println("Today's word to guess is: ");
     }
 
-    public void askPlayerForLetterInput(String name, int remainingAttempts) {
-        System.out.printf("%s: Enter one letter to guess (%d %s remaining):\n", name, remainingAttempts,
+    public void askPlayerForLetterInput(int remainingAttempts) {
+        System.out.printf("Enter one letter to guess (%d %s remaining):\n", remainingAttempts,
                 remainingAttempts > 1 ? "attempts" : "attempt");
     }
-    
+
     public void congratulateWinner(String name, String word) {
         System.out.println("================================");
         System.out.printf("Congratulations %s! You won! \nThe word was: [%s]", name, word);

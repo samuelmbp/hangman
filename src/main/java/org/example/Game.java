@@ -30,8 +30,12 @@ public class Game {
         System.out.println(getWordToGuess());
 
         while(!isGameWon() && getRemainingAttempts() > 0 ) {
-            print.askPlayerForLetterInput(this.name, remainingAttempts);
-            Character playerLetterInput = scanner.nextLine().toUpperCase().charAt(0);
+            print.askPlayerForLetterInput(remainingAttempts);
+            String input = scanner.nextLine().toUpperCase();
+
+            if (input.isEmpty()) continue;
+
+            Character playerLetterInput = input.charAt(0);
             boolean correctGuess = guessLetter(playerLetterInput);
 
             if (correctGuess) {
