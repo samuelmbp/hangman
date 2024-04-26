@@ -16,6 +16,7 @@ public class Print {
     }
 
     public void congratulateWinner(String name, String word) {
+        System.out.println("================================");
         System.out.printf("Congratulations %s! You won! \nThe word to guess was: %s", name, word);
     }
 

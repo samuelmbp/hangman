@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Game {
     final private ArrayList<Character> guessedLetters = new ArrayList<>();
     final private MaskedWord maskedWord;
-    final private WordChooser wordChooser;
     final private Print print = new Print();
     final private String word;
     final private String name;
@@ -16,10 +15,9 @@ public class Game {
     private int remainingAttempts = 7;
 
     public Game(WordChooser wordChooser, MaskedWord maskedWord, String name) {
-        this.wordChooser = wordChooser;
+        this.word = wordChooser.getRandomWord();
         this.maskedWord = maskedWord;
         this.name = name;
-        this.word = wordChooser.getRandomWord();
     }
 
     public void run() {
@@ -79,7 +77,7 @@ public class Game {
         }
     }
 
-    public Boolean isGameWon() {
+    public boolean isGameWon() {
         for (int i = 1; i < this.word.length(); i++) {
             Character letter = this.word.charAt(i);
             if (!this.guessedLetters.contains(letter))

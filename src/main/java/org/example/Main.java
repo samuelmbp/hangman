@@ -7,7 +7,7 @@ public class Main {
         WordChooser wordChooser = new WordChooser();
         MaskedWord masked = new MaskedWord();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your name: ");
+        System.out.println("Enter your name to start playing Hangman: ");
 
         Game game = new Game(wordChooser, masked, scanner.nextLine());
         game.run();
