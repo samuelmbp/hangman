@@ -27,11 +27,13 @@ public class Game {
         hangmanDrawing();
         print.welcomeMessage(this.name);
         print.wordToGuessMessage();
+        // TODO: Remove the below line of code
+        System.out.println(this.word);
         System.out.println(getWordToGuess());
 
         while(!isGameWon() && getRemainingAttempts() > 0 ) {
             print.askPlayerForLetterInput(remainingAttempts);
-            String input = scanner.nextLine().toUpperCase();
+            String input = scanner.nextLine().toLowerCase();
 
             if (input.isEmpty()) continue;
 
