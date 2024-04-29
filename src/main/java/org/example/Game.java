@@ -35,7 +35,10 @@ public class Game {
             print.askPlayerForLetterInput(remainingAttempts);
             String input = scanner.nextLine().toLowerCase();
 
-            if (input.isEmpty()) continue;
+            if (input.isEmpty()) {
+                System.out.println("You did not enter anything. Please enter a letter.");
+                continue;
+            }
 
             Character playerLetterInput = input.charAt(0);
 
