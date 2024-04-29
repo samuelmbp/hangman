@@ -23,11 +23,11 @@ public class Print {
     }
 
     public void correctGuess() {
-        System.out.println("Correct!");
+        System.out.println("Correct guess! The letter is in the word.");
     }
 
     public void wrongGuess() {
-        System.out.println("Wrong!");
+        System.out.println("Incorrect guess! The letter is not in the word.");
     }
 
     public void gameLostMessage(String word) {

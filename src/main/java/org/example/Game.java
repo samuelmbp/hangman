@@ -38,6 +38,17 @@ public class Game {
             if (input.isEmpty()) continue;
 
             Character playerLetterInput = input.charAt(0);
+
+            if (!Character.isLetter(playerLetterInput)) {
+                System.out.println("Invalid input. Please enter a valid letter!");
+                continue;
+            }
+
+            if (guessedLetters.contains(playerLetterInput)) {
+                System.out.println("Letter has already been guessed. Try a new letter.");
+                continue;
+            }
+
             boolean correctGuess = guessLetter(playerLetterInput);
 
             if (correctGuess) {
@@ -71,7 +82,7 @@ public class Game {
     }
 
     private boolean guessLetter(Character letter) {
-        if (this.word.indexOf(letter) != - 1) {
+      if (this.word.indexOf(letter) != - 1) {
             guessedLetters.add(letter);
             return true;
         } else {
