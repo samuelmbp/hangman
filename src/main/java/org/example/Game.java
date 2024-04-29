@@ -35,17 +35,12 @@ public class Game {
             print.askPlayerForLetterInput(remainingAttempts);
             String input = scanner.nextLine().toLowerCase();
 
-            if (input.isEmpty()) {
-                System.out.println("You did not enter anything. Please enter a letter.");
+            if (input.length() != 1 || !Character.isLetter(input.charAt(0))) {
+                System.out.println("Invalid input. Please enter a single letter.");
                 continue;
             }
 
             Character playerLetterInput = input.charAt(0);
-
-            if (!Character.isLetter(playerLetterInput)) {
-                System.out.println("Invalid input. Please enter a valid letter!");
-                continue;
-            }
 
             if (guessedLetters.contains(playerLetterInput)) {
                 System.out.println("Letter has already been guessed. Try a new letter.");
