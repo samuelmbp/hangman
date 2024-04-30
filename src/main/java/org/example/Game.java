@@ -79,7 +79,9 @@ public class Game {
         return this.remainingAttempts;
     }
 
-    private boolean guessLetter(Character letter) {
+    public boolean guessLetter(Character letter) {
+      letter = Character.toLowerCase(letter);
+
       if (this.word.indexOf(letter) != - 1) {
             guessedLetters.add(letter);
             return true;
@@ -132,5 +134,9 @@ public class Game {
     private void displayHangman() {
         int index = HANGMAN_PICS.length - getRemainingAttempts();
         System.out.println(HANGMAN_PICS[index]);
+    }
+
+    public ArrayList<Character> getGuessedLetters() {
+        return guessedLetters;
     }
 }
