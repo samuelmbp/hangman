@@ -25,10 +25,7 @@ public class Game {
 
     public void run() {
         hangmanDrawing();
-        print.welcomeMessage(this.name);
         print.wordToGuessMessage();
-        // TODO: Remove the below line of code
-        System.out.println(this.word);
         System.out.println(getWordToGuess());
 
         while(!isGameWon() && getRemainingAttempts() > 0 ) {
@@ -79,7 +76,7 @@ public class Game {
         return this.remainingAttempts;
     }
 
-    public boolean guessLetter(Character letter) {
+    private boolean guessLetter(Character letter) {
       letter = Character.toLowerCase(letter);
 
       if (this.word.indexOf(letter) != - 1) {
@@ -136,7 +133,4 @@ public class Game {
         System.out.println(HANGMAN_PICS[index]);
     }
 
-    public ArrayList<Character> getGuessedLetters() {
-        return guessedLetters;
-    }
 }
